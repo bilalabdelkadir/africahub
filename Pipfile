@@ -12,6 +12,7 @@ sqlparse = "*"
 django-extensions = "*"
 django-ckeditor = "*"
 pipreqs = "*"
+gunicorn = "*"
 
 [dev-packages]
 

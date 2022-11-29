@@ -1,0 +1,75 @@
+.sub-contaner{
+    padding: 0px 50px;
+    background-color: #EEFBFB;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.subscribe{
+    display: flex;
+    height: 100px ;
+    width: 800px;
+    justify-content: center;
+    align-items: center;
+    background-color: #12232E;
+    border-radius: 10px;
+}
+
+.subscribe h1{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: x-large;
+    color: #EEFBFB;
+    margin-right: 10px;
+}
+
+.email{
+    height: 25px;
+    width: 220px;
+    color: #12232E;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500px;
+    border: none;
+    outline: none;
+    padding: 0px 25px;
+    margin-left: 40px;
+}
+
+.sub-btn{
+    padding: 5px 30px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #12232E;
+    color: #EEFBFB;
+    border: 2px #EEFBFB solid ;
+}
+
+.input-boc{
+    background: #EEFBFB;
+    padding: 10px;
+}
+
+.explain{
+    padding: 0px 70px;
+}
+.explain h1{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: xx-large;
+    color: #EEFBFB;
+    padding: 50px 0px;
+    text-align: center;
+}
+.explain p{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    line-height: 20px;
+    color: #EEFBFB;
+    padding-bottom: 50px;
+}
