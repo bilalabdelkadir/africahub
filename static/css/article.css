@@ -1,0 +1,81 @@
+.main-container {
+  color: #9b9b9b;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 50px;
+}
+
+.main-container img {
+  padding: 20px 30px;
+  align-self: center;
+  width: 800px;
+  height: 70vh;
+  /* border-radius: 10%; */
+}
+
+.main-container h1 {
+  padding: 30px;
+  font-family: "Raleway", sans-serif;
+  font-weight: bolder;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.main-container p {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  padding: 0px 100px;
+  line-height: 20px;
+}
+
+.recomanded-wraper {
+  background-color: #eaeaea;
+  padding: 30px 30px 70px 30px;
+}
+.recomanded-wraper h1 {
+  padding: 30px;
+  font-family: "Raleway", sans-serif;
+  font-weight: bolder;
+  font-size: xx-large;
+  text-align: center;
+  color: #12232e;
+}
+.update{
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.btn {
+  font-family: 'Raleway', sans-serif;
+  font-weight: bolder;
+  font-size: large;
+  padding: 10px 15px;
+}
+.btn-delete{
+  border: #12232E 1px solid;
+  border-radius: 5px;
+  color: #EEFBFB;
+  filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.15));
+  background-color: rgb(77, 168, 218,38%);
+}
+.btn-edit{
+  border: 2px #4DA8DA solid;
+  border-radius: 5px;
+  background-color: #12232E;
+  color: #EEFBFB;;
+}
+.card h1{
+  height: 60px;
+  padding: 20px 20px 0px 0px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 20px;
+  /* display: flex; */
+  /* align-items: center; */
+  letter-spacing: 0.05em;
+  /* text-decoration: underline; */
+  text-transform: uppercase;
+}

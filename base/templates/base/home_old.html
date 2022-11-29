@@ -1,0 +1,53 @@
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+    body{
+        font-family: 'Poppins', sans-serif;
+        background-color: #17BEBB;
+        color: #2E282A;
+    }
+    a{
+        text-decoration: none;
+        color: azure;
+    }
+    a:hover{
+        color: #76B041;
+    }
+    nav ul{
+        display: flex;
+        
+    }
+    nav ul li{
+        margin: 20px;
+        list-style: none;
+    }
+    .btn{
+        background-color: pink;
+        color: black;
+
+    }
+</style>
+<nav>
+    <ul>
+        <li>{% if request.user.is_authenticated %}
+        <li><a href="{% url 'create-article' %}">Create Blog</a></li>
+        <li><a href="{% url 'logout' %}">logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">login</a>
+        <a href="{% url 'register' %}">register</a>
+        {% endif %}</li> 
+    </ul>
+</nav>
+
+<h1>top voted article for the week</h1>
+
+{% for blog in blogs %}
+<a href="{% url 'article' blog.slug %}"> <h3>{{blog.title}}</h3></a>
+{% if request.user == blog.author %}
+<a class="btn" href="{% url 'delete-article' blog.id  %}">Delete</a>
+<a class="btn" href="{% url 'update-article' blog.slug %} ">edit</a>
+{% endif %}
+<hr>
+{% endfor %}
+{% endblock content %}
+    

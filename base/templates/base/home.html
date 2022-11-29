@@ -1,0 +1,129 @@
+{% load static %}
+
+{% block content %}
+    
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %} ">
+    <link rel="stylesheet" href="{% static  'css/hero.css' %}">
+    <link rel="stylesheet" href="{% static 'css/recomanded.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub.css '%}">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a class="logo" href="#"><h1>AFRICA-HUB</h1></a>
+            <!-- <div class="search-div"> -->
+            <input class="search" type="text" placeholder="SEARCH">
+            <!-- <input type="submit" value="SEARCH">
+        </div> -->
+            <ul class="home-links">
+                
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="#">ROADMAPS</a></li>
+                <li><a href="{% url 'blog' %}">BLOGS</a></li>
+                <li><a href="#">ABOUT ME</a></li>
+            </ul>
+            <div class="nav-button">
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'create-article' %}"><button class="login">Creat Blog</button></a>
+                <a href="{% url 'logout' %}"><button class="signup">Logout</button></a>
+                {% else %}
+                <a href="{% url 'login' %}"><button class="login">LOG IN</button></a>
+                <a href="{% url 'register' %}"><button class="signup">SIGN UP</button></a>
+                {% endif %}
+            </div>
+
+        </nav>
+        <section class="grid-container">
+            <div class="grid-item-1">
+                <h1>DISCOVER THE BEST & TALENTED DEVELOPER IN AFRICA</h1>
+                <p> Are you strugling to learn software engineering?<br>
+                    or are you experted software engineer?<br> well you can start wrinting or exploring in our platform</p>
+                <div class="hero-button">
+                        <a href="{% url 'create-article' %}"><button class="btn btn-start">START WRITING</button></a>
+                        <a href="#"><button class="btn btn-roadmap">DISCOVER ROADMAPS</button></a>
+                </div>
+            </div>
+            <div class="grid-item-2">
+                <img class="hero-img" src="{% static 'images/phones.png' %}" alt="">
+            </div>
+        </section>
+        </div>
+        <hr>
+    <div class="recomanded">
+        <div class="wrapc">
+            <h1 class="rhead">RECOMMENDED ROADMAPS</h1>
+            <div class="card-container">
+                {% for blog in blogs %}
+                <div class="card">
+                    <h1>{{blog.title|slice:":70"}}</h1>
+                    <p>{{blog.body|slice:":300"}}</p>
+                    <div class="bsec">
+                    <a href="{% url 'article' blog.slug %}" class="arrow"> CONTINUE READING<img class="point" src="{% static 'images/arrow_forward.svg' %}"></a>
+                    <a href="#" class="catagory">Javascript</a>
+                    </div>
+                </div>
+                {% endfor %}
+                    
+                </div>
+    </div> 
+    <div class="wrapc">
+        <h1 class="rhead">RECOMMENDED BLOGS</h1>
+        <div class="card-container">
+        {% for blog in blogs %}
+        <div class="card">
+            <h1>{{blog.title|slice:":30"}}</h1>
+            <p>{{blog.body|slice:":300"}}</p>
+            <div class="bsec">
+            <a href="{% url 'article' blog.slug %}" class="arrow"> CONTINUE READING<img class="point" src="{% static 'images/arrow_forward.svg' %}"></a>
+            <a href="#" class="catagory">Javascript</a>
+            </div>
+        </div>
+        {% endfor %}
+            
+        </div>
+        
+    </div>
+    </div>
+<hr>
+<div class="explain">
+    <h1>WHAT TO USE THIS WEBSITE</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin nunc eget erat luctus feugiat. Integer volutpat sit amet nulla non consectetur. Cras mollis tellus vel mauris rutrum accumsan at in ex. Nullam condimentum feugiat nisi nec ornare. Ut dictum dui eu eros imperdiet, vel consectetur lorem egestas. Donec in ultrices leo. Cras interdum purus vitae purus condimentum, a hendrerit ligula suscipit. Etiam magna purus, feugiat quis magna non, volutpat iaculis erat. Suspendisse hendrerit vel sapien id auctor. Mauris maximus lacus convallis felis varius, non gravida augue eleifend. Nam lacinia id urna a accumsan. Donec sed imperdiet nisi. Curabitur dignissim risus lacinia mi faucibus ornare. Sed fermentum ligula sed libero aliquet dictum.
+        <br>
+        <br>
+        Etiam varius eros sed augue egestas ullamcorper. Nam lacinia lobortis ex, vel fringilla nunc posuere id. Maecenas sollicitudin vehicula purus nec venenatis. In ornare ex pellentesque ultrices bibendum. Proin eget commodo mi, ac malesuada lorem. Donec consectetur scelerisque orci, non consectetur elit dapibus non. Duis quis condimentum tellus. Vestibulum ac est sit amet leo pretium fringilla vitae et enim. Ut massa velit, faucibus ac est vitae, laoreet pulvinar neque. Etiam sodales odio id dolor sollicitudin commodo. Nullam luctus orci non ornare tristique. Fusce cursus lobortis ex, ac malesuada erat egestas in. Nunc vehicula sapien sit amet metus consequat, quis egestas mauris gravida.
+        
+        Pellentesque et velit iaculis, molestie urna ac, laoreet massa. Fusce quam lacus, sodales sit amet ante a, tempus convallis orci. Sed sit amet purus at libero rhoncus dapibus ac vel enim. Vestibulum tempus suscipit lacus nec consequat. Quisque massa tortor, condimentum ut dui sit amet, posuere convallis ex. Vivamus nec augue eget metus suscipit ornare. Integer vel bibendum nisl, at aliquet tellus. Mauris libero quam, egestas ac sodales a, facilisis ut augue.
+        <br>
+        <br>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt unde doloremque blanditiis, nemo, illo cum ipsa veritatis minima labore mollitia doloribus earum consectetur. Laboriosam at facilis, itaque, sapiente nobis animi, ullam consectetur possimus odio iusto dicta! Sapiente, libero? Quo veniam praesentium est blanditiis harum magni fuga deleniti reprehenderit ea beatae.    
+    </p>
+</div>
+<hr>
+    <div class="sub-contaner">
+        <div class="subscribe">
+            <h1>Subscribe Newsletters</h1>
+            <div class="input-boc">
+                <input  type="text" placeholder="example@email.com" class="email">
+                <input type="submit" value="SUBSCRIBE" class="sub-btn">
+            </div>
+        </div>
+    </div>
+    <hr>
+        <footer>
+            <p>This website is built by Bilal Abdelkadir</p>
+        </footer>
+    </div>
+</body>
+</html>
+
+{% endblock content %}

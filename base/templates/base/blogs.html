@@ -1,0 +1,64 @@
+{% load static %}
+
+{% block content %}
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %} ">
+    <link rel="stylesheet" href="{% static  'css/hero.css' %}">
+    <link rel="stylesheet" href="{% static 'css/recomanded.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sub.css '%}">
+    
+</head>
+<body>
+    <div class="container">
+    <nav>
+        <a class="logo" href="#"><h1>AFRICA-HUB</h1></a>
+        <!-- <div class="search-div"> -->
+        <input class="search" type="text" placeholder="SEARCH">
+        <!-- <input type="submit" value="SEARCH">
+    </div> -->
+        <ul class="home-links">
+            
+            <li><a href="{% url 'home' %}">HOME</a></li>
+            <li><a href="#">ROADMAPS</a></li>
+            <li><a href="{% url 'blog' %}">BLOGS</a></li>
+            <li><a href="#">ABOUT ME</a></li>
+        </ul>
+        <div class="nav-button">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'create-article' %}"><button class="login">Creat Blog</button></a>
+            <a href="{% url 'logout' %}"><button class="signup">Logout</button></a>
+            {% else %}
+            <a href="{% url 'login' %}"><button class="login">LOG IN</button></a>
+            <a href="{% url 'register' %}"><button class="signup">SIGN UP</button></a>
+            {% endif %}
+        </div>
+
+    </nav>
+    <div class="card-container">
+        {% for blog in blogs %}
+        <div class="card">
+            <h1>{{blog.title|slice:":30"}}</h1>
+            <p>{{blog.body|slice:":300"}}</p>
+            <div class="bsec">
+            <a href="{% url 'article' blog.slug %}" class="arrow"> CONTINUE READING<img class="point" src="{% static 'images/arrow_forward.svg' %}"></a>
+            <a href="#" class="catagory">Javascript</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <hr>
+    <footer>
+        <p>This website is built by Bilal Abdelkadir</p>
+    </footer>
+</div>
+</body>
+</html>
+
+{% endblock content %}

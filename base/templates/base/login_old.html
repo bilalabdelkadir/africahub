@@ -1,0 +1,17 @@
+<h1>LOG in</h1>
+
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="username" name="username" placeholder="Enter your username">
+    <input type="password" name="password"> 
+    <input type="submit" value="Login">
+</form>
+
+
+    
+{% endblock content %}
+
+
+    
