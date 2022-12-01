@@ -1,59 +1,90 @@
-{% load static %}
-
-{% block content %}
+{% load static %} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %} ">
-    <link rel="stylesheet" href="{% static  'css/hero.css' %}">
-    <link rel="stylesheet" href="{% static 'css/recomanded.css' %}">
-    <link rel="stylesheet" href="{% static 'css/article.css '%}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %} " />
+    <link rel="stylesheet" href="{% static  'css/hero.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/recomanded.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/article.css '%}" />
   </head>
   <body>
     <nav>
       <a class="logo" href="#"><h1>AFRICA-HUB</h1></a>
       <!-- <div class="search-div"> -->
-      <input class="search" type="text" placeholder="SEARCH">
+      <form method="GET" action="{% url 'blog' %}">
+        <input class="search" type="text" name="q" placeholder="SEARCH" />
+      </form>
       <!-- <input type="submit" value="SEARCH">
   </div> -->
       <ul class="home-links">
-          
-          <li><a href="{% url 'home' %}">HOME</a></li>
-          <li><a href="#">ROADMAPS</a></li>
-          <li><a href="{% url 'blog' %}">BLOGS</a></li>
-          <li><a href="#">ABOUT ME</a></li>
+        <li><a href="{% url 'home' %}">HOME</a></li>
+        <li><a href="#">ROADMAPS</a></li>
+        <li><a href="{% url 'blog' %}">BLOGS</a></li>
+        <li><a href="#">ABOUT ME</a></li>
       </ul>
       <div class="nav-button">
-          {% if request.user.is_authenticated %}
-          <a href="{% url 'create-article' %}"><button class="login">Creat Blog</button></a>
-          <a href="{% url 'logout' %}"><button class="signup">Logout</button></a>
-          {% else %}
-          <a href="{% url 'login' %}"><button class="login">LOG IN</button></a>
-          <a href="{% url 'register' %}"><button class="signup">SIGN UP</button></a>
-          {% endif %}
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'create-article' %}"
+          ><button class="login">Creat Blog</button></a
+        >
+        <a href="{% url 'logout' %}"><button class="signup">Logout</button></a>
+        {% else %}
+        <a href="{% url 'login' %}"><button class="login">LOG IN</button></a>
+        <a href="{% url 'register' %}"
+          ><button class="signup">SIGN UP</button></a
+        >
+        {% endif %}
       </div>
-
-  </nav>
+    </nav>
     <!-- endnav bar -->
     <div class="main-container">
       <img
         src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y29kaW5nfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
         alt=""
       />
-      <h1>{{blog.title}}
-      </h1>
+      <h1>{{blog.title}}</h1>
       {% if request.user == blog.author %}
-        <div class="update">
-        <a href="{% url 'delete-article' blog.id  %}"><button class="btn btn-delete">Delete</button></a>
-        <a href="{% url 'update-article' blog.slug %}"><button class="btn btn-edit">Edit</button></a>
-        </div>
+      <div class="update">
+        <a href="{% url 'delete-article' blog.id  %}"
+          ><button class="btn btn-delete">Delete</button></a
+        >
+        <a href="{% url 'update-article' blog.slug %}"
+          ><button class="btn btn-edit">Edit</button></a
+        >
+      </div>
       {% endif %}
       <p>{{blog.body|safe}}</p>
     </div>
+    <!-- comment start -->
+    <hr />
+    <div class="comment">
+      <h1>Comments</h1>
+      <div class="load-com">
+        {% for comment in comments %}
+        <p>{{comment.body}}</p>
+        <p class="p2">commented by: @{{comment.owner}}</p>
+        <hr />
+        {% endfor %}
+      </div>
+      <div class="comment-in">
+        {% if request.user.is_authenticated %}
+        <form action="" method="POST">
+          {% csrf_token %} {{commentform.body}}
+          <input
+            class="com-submit"
+            type="submit"
+            name="comment"
+            value="comment"
+          />
+        </form>
+        {% endif %}
+      </div>
+    </div>
+    <!-- comment end -->
     <div class="recomanded-wraper">
       <h1>RECOMMENDED BLOGS</h1>
       <div class="card-container">
@@ -62,12 +93,15 @@
           <h1>{{blog.title|slice:":30"}}</h1>
           <p>{{blog.body|slice:":300"}}</p>
           <div class="bsec">
-          <a href="{% url 'article' blog.slug %}" class="arrow"> CONTINUE READING<img class="point" src="{% static 'images/arrow_forward.svg' %}"></a>
-          <a href="#" class="catagory">Javascript</a>
+            <a href="{% url 'article' blog.slug %}" class="arrow">
+              CONTINUE READING<img
+                class="point"
+                src="{% static 'images/arrow_forward.svg' %}"
+            /></a>
+            <a href="#" class="catagory">Javascript</a>
           </div>
-      </div>
+        </div>
         {% endfor %}
-      
       </div>
     </div>
     <footer>

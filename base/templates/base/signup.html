@@ -13,42 +13,45 @@
   </head>
   <body>
     <div class="container">
-    <nav>
-      <a class="logo" href="#"><h1>AFRICA-HUB</h1></a>
-      <!-- <div class="search-div"> -->
-      <input class="search" type="text" placeholder="SEARCH" />
-      <!-- <input type="submit" value="SEARCH">
+      <nav>
+        <a class="logo" href="#"><h1>AFRICA-HUB</h1></a>
+        <!-- <div class="search-div"> -->
+        <form method="GET" action="{% url 'blog' %}">
+          <input class="search" type="text" name="q" placeholder="SEARCH" />
+        </form>
+        <!-- <input type="submit" value="SEARCH">
     </div> -->
-      <ul class="home-links">
-        <li><a href="{% url 'home' %}">HOME</a></li>
-        <li><a href="#">ROADMAPS</a></li>
-        <li><a href="{% url 'blog' %}">BLOGS</a></li>
-        <li><a href="#">ABOUT ME</a></li>
-      </ul>
-      <div class="nav-button">
-        <a href="{% url 'login' %}"><button class="login">LOG IN</button></a>
-        <a href="{% url 'register' %}"
-          ><button class="signup">SIGN UP</button></a
-        >
+        <ul class="home-links">
+          <li><a href="{% url 'home' %}">HOME</a></li>
+          <li><a href="#">ROADMAPS</a></li>
+          <li><a href="{% url 'blog' %}">BLOGS</a></li>
+          <li><a href="#">ABOUT ME</a></li>
+        </ul>
+        <div class="nav-button">
+          <a href="{% url 'login' %}"><button class="login">LOG IN</button></a>
+          <a href="{% url 'register' %}"
+            ><button class="signup">SIGN UP</button></a
+          >
+        </div>
+      </nav>
+      <div class="form-container">
+        <h1>Create An Account</h1>
+        <h3>Create an account to create your own blog and roadmap</h3>
+        <form action="" method="POST">
+          {% csrf_token %}
+          <!-- <input type="text" placeholder="EMAIL" /> -->
+          <!-- {{form.as_p}} -->
+          {{form.username}} {{form.email}} {{form.password1}} {{form.password2}}
+          <!-- <input type="password" placeholder="password" /> -->
+          <!-- <input type="password" placeholder="confirm password" /> -->
+          <input class="create-acc" type="submit" value="Create Account" />
+        </form>
+        <p>
+          Already Have An Account?
+          <a href="{% url 'login' %}"><u>Sign In</u></a>
+        </p>
       </div>
-    </nav>
-    <div class="form-container">
-      <h1>Create An Account</h1>
-      <h3>Create an account to create your own blog and roadmap</h3>
-      <form action="" method="POST">
-        {% csrf_token %}
-        <!-- <input type="text" placeholder="EMAIL" /> -->
-        <!-- {{form.as_p}} -->
-        {{form.username}} {{form.email}} {{form.password1}} {{form.password2}}
-        <!-- <input type="password" placeholder="password" /> -->
-        <!-- <input type="password" placeholder="confirm password" /> -->
-        <input class="create-acc" type="submit" value="Create Account" />
-      </form>
-      <p>
-        Already Have An Account? <a href="{% url 'login' %}"><u>Sign In</u></a>
-      </p>
     </div>
-  </div>
   </body>
 </html>
 {% endblock content %}

@@ -40,36 +40,35 @@
   text-align: center;
   color: #12232e;
 }
-.update{
+.update {
   padding-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 .btn {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: bolder;
   font-size: large;
   padding: 10px 15px;
 }
-.btn-delete{
-  border: #12232E 1px solid;
+.btn-delete {
+  border: #12232e 1px solid;
   border-radius: 5px;
-  color: #EEFBFB;
+  color: #eefbfb;
   filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.15));
-  background-color: rgb(77, 168, 218,38%);
+  background-color: rgb(77, 168, 218, 38%);
 }
-.btn-edit{
-  border: 2px #4DA8DA solid;
+.btn-edit {
+  border: 2px #4da8da solid;
   border-radius: 5px;
-  background-color: #12232E;
-  color: #EEFBFB;;
+  background-color: #12232e;
+  color: #eefbfb;
 }
-.card h1{
+.card h1 {
   height: 60px;
   padding: 20px 20px 0px 0px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 800;
   font-size: 18px;
   line-height: 20px;
@@ -78,4 +77,60 @@
   letter-spacing: 0.05em;
   /* text-decoration: underline; */
   text-transform: uppercase;
+}
+.comment {
+  border: #f6fbf9 2px solid;
+  margin: 20px 50px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.comment-in input {
+  width: 300px;
+  height: 30px;
+  color: #12232e;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500px;
+  outline: none;
+  border: none;
+  padding: 0px 25px;
+}
+input[type="submit"] {
+  text-decoration: none;
+  margin: auto;
+  width: 200px;
+  height: 30px;
+  padding: 10 15px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: larger;
+  cursor: pointer;
+  color: #f6fbf9;
+  background-color: #12232e;
+  border-radius: 10px;
+  border: #f6fbf9 1px solid;
+}
+.comment h1 {
+  padding: 20px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: xx-large;
+  text-align: center;
+  color: #f6fbf9;
+  text-transform: uppercase;
+}
+.load-com p {
+  color: #f6fbf9;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  padding: 5px 0px;
+  line-height: 20px;
+}
+.load-com .p2 {
+  color: #838383;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  padding: 5px 0px;
+  line-height: 20px;
 }

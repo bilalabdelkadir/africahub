@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 # Create your views here.
 
 
@@ -43,14 +44,20 @@ def Home(request):
     context = {'blogs':blogs}
     return render(request,'base/home.html',context)
 def BlogList(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    blog_search = Article.objects.filter(
+        Q(title__icontains=q) |
+        Q(body__icontains=q)
+        )
     blogs = Article.objects.filter(status=1).order_by('-created_at')[0:15]
-    context = {'blogs':blogs}
+    context = {'blogs':blogs,'blog_search':blog_search}
     return render(request,'base/blogs.html',context)
 
 def article(request, slug):
+    
     blogs = Article.objects.filter(status=1).order_by('-created_at')[3:6]
     blog = Article.objects.get(slug=slug)
-    comments = blog.comment_set.all()[:3]
+    comments = blog.comment_set.all()[:6]
     commentform = CommentForm()
     if request.method == "POST":
         commentform = CommentForm(request.POST)
@@ -60,6 +67,7 @@ def article(request, slug):
             commentl.owner = request.user
             commentl.article = article
             commentform.save()
+            return redirect('article', commentl.article.slug)
 
     context = {'blog':blog,'comments':comments,'commentform':commentform,'blogs':blogs}
     return render(request, 'base/article.html', context)

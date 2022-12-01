@@ -17,7 +17,9 @@
     <nav>
         <a class="logo" href="#"><h1>AFRICA-HUB</h1></a>
         <!-- <div class="search-div"> -->
-        <input class="search" type="text" placeholder="SEARCH" />
+          <form method="GET" action="{% url 'blog' %}">
+            <input class="search" type="text" name="q" placeholder="SEARCH" />
+          </form>
         <!-- <input type="submit" value="SEARCH">
       </div> -->
         <ul class="home-links">
